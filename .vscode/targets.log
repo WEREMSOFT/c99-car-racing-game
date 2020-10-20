@@ -1,0 +1,599 @@
+make all --print-data-base --no-builtin-variables --no-builtin-rules --question
+# GNU Make 4.2.1
+# Built for x86_64-pc-linux-gnu
+# Copyright (C) 1988-2016 Free Software Foundation, Inc.
+# License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+# This is free software: you are free to change and redistribute it.
+# There is NO WARRANTY, to the extent permitted by law.
+
+# Make data base, printed on Tue Oct 20 20:27:47 2020
+
+# Variables
+
+# 'override' directive
+GNUMAKEFLAGS := 
+# automatic
+<D = $(patsubst %/,%,$(dir $<))
+# automatic
+?F = $(notdir $?)
+# makefile (from 'Makefile', line 19)
+BLD_D := bin/
+# environment
+PAPERSIZE = a4
+# environment
+DESKTOP_SESSION = ubuntu
+# makefile (from 'Makefile', line 21)
+ASST_D := assets/
+# default
+.SHELLFLAGS := -c
+# environment
+CRASH_REPORTER_START_OPTIONS = {"companyName":"Microsoft","productName":"VSCode","submitURL":"appcenter://code?aid=fba07a4d-84bd-4fc8-a125-9640fc8ce171&uid=97bbe82f-a7fe-41c1-8ba6-68f5ba54e0e0&iid=97bbe82f-a7fe-41c1-8ba6-68f5ba54e0e0&sid=97bbe82f-a7fe-41c1-8ba6-68f5ba54e0e0","uploadToServer":true}
+# environment
+XDG_SESSION_CLASS = user
+# environment
+SNAP_COMMON = /var/snap/code/common
+# environment
+XDG_SESSION_TYPE = x11
+# automatic
+?D = $(patsubst %/,%,$(dir $?))
+# makefile (from 'Makefile', line 26)
+ASM_D := asm/
+# automatic
+@D = $(patsubst %/,%,$(dir $@))
+# environment
+XAUTHORITY = /run/user/1000/gdm/Xauthority
+# environment
+GDMSESSION = ubuntu
+# environment
+XMODIFIERS = @im=ibus
+# makefile
+CURDIR := /home/werem/Documents/projects/c/c99-car-racing-game
+# makefile
+SHELL = /bin/sh
+# environment
+SNAP_DATA = /var/snap/code/48
+# environment
+VTE_VERSION = 6003
+# environment
+VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
+# makefile (from 'Makefile', line 40)
+EMSC_CFLAGS := -O2 -s -Wall -std=c99 -D_DEFAULT_SOURCE -Wno-missing-braces -s DISABLE_DEPRECATED_FIND_EVENT_TARGET_BEHAVIOR=0 -s USE_GLFW=3 -s TOTAL_MEMORY=67108864 -v -D OS_WEB
+# environment
+JOURNAL_STREAM = 9:101432
+# makefile (from 'Makefile', line 33)
+CFLAGS := -O0 -Wpedantic -g -Wall -std=c99 -g3 -DOS_Linux 
+# environment
+XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
+# environment
+SNAP_INSTANCE_NAME = code
+# environment
+SNAP_ARCH = amd64
+# makefile (from 'Makefile', line 9)
+DETTECTED_OS := Linux
+# makefile (from 'Makefile', line 1)
+MAKEFILE_LIST :=  Makefile
+# automatic
+@F = $(notdir $@)
+# environment
+IM_CONFIG_PHASE = 1
+# environment
+USERNAME = werem
+# environment
+MAKELEVEL := 0
+# environment
+XDG_DATA_DIRS = /usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop
+# environment
+DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus
+# environment
+VSCODE_LOGS = /home/werem/.config/Code/logs/20201020T202745
+# environment
+MANAGERPID = 2929
+# environment
+LESSOPEN = | /usr/bin/lesspipe %s
+# environment
+LC_NAME = en_GB.UTF-8
+# environment
+GSETTINGS_SCHEMA_DIR = /snap/code/48/usr/share/glib-2.0/schemas
+# default
+MAKE_HOST := x86_64-pc-linux-gnu
+# makefile (from 'Makefile', line 29)
+OBJ_FILES := obj/main.o
+# environment
+PATH = /home/werem/Documents/projects/c/emsdk:/home/werem/Documents/projects/c/emsdk/upstream/emscripten:/home/werem/Documents/projects/c/emsdk/node/12.18.1_64bit/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/werem/.dotnet/tools
+# environment
+GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
+# environment
+SESSION_MANAGER = local/werem-ubuntu:@/tmp/.ICE-unix/3149,unix/werem-ubuntu:/tmp/.ICE-unix/3149
+# makefile (from 'Makefile', line 39)
+RAYLIB_PATH := /Users/pabloweremczuk/Documents/Proyectos/c/raylib
+# environment
+XDG_RUNTIME_DIR = /run/user/1000/snap.code
+# environment
+SNAP = /snap/code/48
+# environment
+EMSDK_NODE = /home/werem/Documents/projects/c/emsdk/node/12.18.1_64bit/bin/node
+# environment
+SNAP_VERSION = d2e414d9
+# environment
+XDG_MENU_PREFIX = gnome-
+# environment
+VSCODE_LOG_STACK = false
+# environment
+DISABLE_WAYLAND = 1
+# environment
+ELECTRON_RUN_AS_NODE = 1
+# environment
+INVOCATION_ID = e230a788783148f6b1a7e9a366e60053
+# makefile (from 'Makefile', line 24)
+LIBS_D := libs/
+# default
+.FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
+# environment
+LS_COLORS = rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:
+# environment
+XDG_SESSION_DESKTOP = ubuntu
+# environment
+SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
+# automatic
+%F = $(notdir $%)
+# makefile (from 'Makefile', line 8)
+UNAME_S := Linux
+# environment
+DISPLAY = :0
+# makefile (from 'Makefile', line 42)
+EMSC_STATIC_LIBS_D := libs/static/libraylib.bc
+# makefile (from 'Makefile', line 32)
+STATIC_LIBS_D := -Llibs/static/
+# makefile (from 'Makefile', line 36)
+BIN_EXTENSION = bin
+# environment
+SNAP_INSTANCE_KEY = 
+# environment
+PWD = /home/werem/Documents/projects/c/c99-car-racing-game
+# default
+.LOADED := 
+# environment
+SSH_AGENT_PID = 3114
+# environment
+EM_CACHE = /home/werem/Documents/projects/c/emsdk/upstream/emscripten/cache
+# environment
+ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
+# environment
+GTK_MODULES = gail:atk-bridge
+# environment
+HOME = /home/werem
+# environment
+LESSCLOSE = /usr/bin/lesspipe %s %s
+# environment
+VSCODE_CLI = 1
+# environment
+LOGNAME = werem
+# environment
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
+# environment
+SNAP_LIBRARY_PATH = /var/lib/snapd/lib/gl:/var/lib/snapd/lib/gl32:/var/lib/snapd/void
+# environment
+SNAP_CONTEXT = JdDlJJ6rRKh92cKpQr8Bh3t1JqMC6MyfMwXmTG595Pq5
+# automatic
++F = $(notdir $+)
+# makefile (from 'Makefile', line 18)
+SRC_D := src/
+# makefile (from 'Makefile', line 47)
+EMSC_CC_COMMAND := emcc -O2 -s -Wall -std=c99 -D_DEFAULT_SOURCE -Wno-missing-braces -s DISABLE_DEPRECATED_FIND_EVENT_TARGET_BEHAVIOR=0 -s USE_GLFW=3 -s TOTAL_MEMORY=67108864 -v -D OS_WEB -Ilibs/include/ -Llibs/static/
+# makefile (from 'Makefile', line 34)
+DEBUGGER := kdbg 
+# environment
+SNAP_USER_COMMON = /home/werem/snap/code/common
+# environment
+VSCODE_HANDLES_UNCAUGHT_ERRORS = true
+# environment
+GNOME_DESKTOP_SESSION_ID = this-is-deprecated
+# automatic
+^D = $(patsubst %/,%,$(dir $^))
+# environment
+LC_TIME = en_GB.UTF-8
+# environment
+SNAP_REAL_HOME = /home/werem
+# environment
+VERBOSE_LOGGING = true
+# environment
+COLORTERM = truecolor
+# default
+MAKE = $(MAKE_COMMAND)
+# default
+MAKECMDGOALS := all
+# environment
+QT_IM_MODULE = ibus
+# makefile (from 'Makefile', line 23)
+TEST_BLD_D := tests/bin/
+# environment
+SNAP_USER_DATA = /home/werem/snap/code/48
+# environment
+SHLVL = 1
+# makefile (from 'Makefile', line 41)
+EMSC_CC := emcc
+# makefile (from 'Makefile', line 17)
+CC := gcc
+# environment
+GNOME_SHELL_SESSION_MODE = ubuntu
+# environment
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/snap.code/vscode-ipc-ae6af860-c986-405e-8e1e-9b20b7ccde9f.sock
+# default
+MAKE_VERSION := 4.2.1
+# environment
+AMD_ENTRYPOINT = vs/workbench/services/extensions/node/extensionHostProcess
+# environment
+USER = werem
+# environment
+SNAP_REVISION = 48
+# environment
+LC_MONETARY = en_GB.UTF-8
+# makefile
+.DEFAULT_GOAL := all
+# environment
+XDG_CURRENT_DESKTOP = Unity
+# environment
+PIPE_LOGGING = true
+# automatic
+%D = $(patsubst %/,%,$(dir $%))
+# environment
+LC_TELEPHONE = en_GB.UTF-8
+# default
+MAKE_COMMAND := make
+# environment
+VSCODE_NODE_CACHED_DATA_DIR = /home/werem/.config/Code/CachedData/d2e414d9e4239a252d1ab117bd7067f125afd80a
+# makefile (from 'Makefile', line 25)
+HTML_D := html/
+# environment
+OLDPWD = /home/werem/Documents/projects/c
+# default
+.VARIABLES := 
+# automatic
+*F = $(notdir $*)
+# environment
+VSCODE_IPC_HOOK = /run/user/1000/snap.code/vscode-c2d9916e-1.50.1-main.sock
+# makefile (from 'Makefile', line 46)
+CC_COMMAND := gcc -O0 -Wpedantic -g -Wall -std=c99 -g3 -DOS_Linux  -Ilibs/include/ -Llibs/static/
+# makefile
+MAKEFLAGS = pqrR
+# makefile (from 'Makefile', line 22)
+TEST_SRC_D := tests/
+# environment
+MFLAGS = -pqrR
+# automatic
+*D = $(patsubst %/,%,$(dir $*))
+# environment
+BREAKPAD_DUMP_LOCATION = /home/werem/.config/Code/exthost Crash Reports
+# automatic
++D = $(patsubst %/,%,$(dir $+))
+# environment
+LC_PAPER = en_GB.UTF-8
+# environment
+NO_AT_BRIDGE = 1
+# environment
+LC_IDENTIFICATION = en_GB.UTF-8
+# environment
+QT_ACCESSIBILITY = 1
+ 
+# 'override' directive
+.SHELLSTATUS := 0
+# default
+MAKEFILES := 
+# environment
+SNAP_COOKIE = JdDlJJ6rRKh92cKpQr8Bh3t1JqMC6MyfMwXmTG595Pq5
+# environment
+EM_CONFIG = /home/werem/Documents/projects/c/emsdk/.emscripten
+# environment
+LC_NUMERIC = en_GB.UTF-8
+# automatic
+<F = $(notdir $<)
+# environment
+LC_MEASUREMENT = en_GB.UTF-8
+# environment
+SNAP_NAME = code
+# makefile (from 'Makefile', line 35)
+MK_DIR := mkdir -p
+# environment
+ELECTRON_NO_ATTACH_CONSOLE = 1
+# makefile (from 'Makefile', line 20)
+OBJ_D := obj/
+# environment
+GJS_DEBUG_TOPICS = JS ERROR;JS LOG
+# makefile (from 'Makefile', line 54)
+LINK_LIBS := -l:libraylib.a -lm -ldl -lpthread -lX11 -lxcb -lGL -lGLX -lXext -lGLdispatch -lXau -lXdmcp
+# environment
+GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/03aab89e_7127_4a9a_ab85_f6c2ee6016a5
+# automatic
+^F = $(notdir $^)
+# makefile (from 'Makefile', line 28)
+SRC_FILES := src/main.c
+# environment
+GNOME_TERMINAL_SERVICE = :1.103
+# default
+SUFFIXES := 
+# environment
+SNAP_REEXEC = 
+# environment
+CHROME_DESKTOP = code-url-handler.desktop
+# environment
+WINDOWPATH = 2
+# default
+.INCLUDE_DIRS = /usr/include /usr/local/include /usr/include
+# environment
+GJS_DEBUG_OUTPUT = stderr
+# default
+.RECIPEPREFIX := 
+# environment
+LC_ADDRESS = en_GB.UTF-8
+# environment
+LANG = en_US.UTF-8
+# environment
+TERM = xterm-256color
+# environment
+EMSDK = /home/werem/Documents/projects/c/emsdk
+# environment
+VSCODE_PID = 211686
+# makefile (from 'Makefile', line 31)
+INCLUDE_D := -Ilibs/include/
+# makefile (from 'Makefile', line 55)
+TEST_LINK_LIBS := -lunity 
+# variable set hash-table stats:
+# Load=163/1024=16%, Rehash=0, Collisions=35/240=15%
+
+# Pattern-specific Variable Values
+
+# No pattern-specific variable values.
+
+# Directories
+
+# . (device 66309, inode 1461396): 11 files, no impossibilities.
+# bin: could not be stat'd.
+# tests/bin: could not be stat'd.
+# src (device 66309, inode 1463590): 3 files, no impossibilities.
+# tests (device 66309, inode 1463597): No files, no impossibilities so far.
+
+# 14 files, no impossibilities in 5 directories.
+
+# Implicit Rules
+
+obj/%.o: src/%.c
+#  recipe to execute (from 'Makefile', line 76):
+	$(CC_COMMAND) -c -o $@ $^
+
+tests/bin/%.spec.bin: tests/%.spec.c
+#  recipe to execute (from 'Makefile', line 79):
+	@echo "### Building tests for $(@) START ###"
+	$(CC_COMMAND) -o $@ $^ $(TEST_LINK_LIBS) $(LINK_LIBS)
+	@echo "### End ###"
+	@echo ""
+
+bin/%.bin: src/%.c
+#  recipe to execute (from 'Makefile', line 85):
+	@echo "### Building tests for $(@) START ###"
+	$(CC_COMMAND) -o $@ $^ $(LINK_LIBS)
+	@echo "### End ###"
+	@echo ""
+
+html/%.html: src/main.c
+#  recipe to execute (from 'Makefile', line 91):
+	$(EMSC_CC_COMMAND) -g4 --source-map-base http://127.0.0.1:5500/html/ $^ -o $@ $(EMSC_STATIC_LIBS_D)
+	cp -r src html/src
+
+run_perf_%.bin: bin/%.bin
+#  recipe to execute (from 'Makefile', line 119):
+	perf stat -e task-clock,cycles,instructions,cache-references,cache-misses $^
+	
+
+debug_%: bin/%.bin
+#  recipe to execute (from 'Makefile', line 122):
+	$(DEBUGGER) $^
+
+run_%: bin/%.bin
+#  recipe to execute (from 'Makefile', line 125):
+	$^
+
+test_%: tests/bin/%.spec.bin
+#  recipe to execute (from 'Makefile', line 128):
+	$^
+
+asm/%.S: src/%.c
+#  recipe to execute (from 'Makefile', line 131):
+	$(CC_COMMAND) -o $@ $(CFLAGS) -S $^ $(LINK_LIBS)  
+
+# 9 implicit rules, 0 (0.0%) terminal.
+
+# Files
+
+# Not a target:
+bin/main.bin:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+run_html_u:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+
+debug_unoptimized:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+
+run_html_o:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+
+debug_optimized:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+
+run_performance_test:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+
+all: print_information bin/main.bin web
+#  Command line target.
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/4=0%
+
+.PHONY: web test run_% debug_optimized debug_unoptimized print_information create_folder_structure run_html_u run_html_o run_performance_test init_project
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+create_folder_structure:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+
+web: html/main.html
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+
+# Not a target:
+obj/main.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+.SUFFIXES:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+Makefile:
+#  Implicit rule search has been done.
+#  Last modified 2020-10-20 20:27:18.912153066
+#  File has been updated.
+#  Successfully updated.
+
+test:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+
+create_folders:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 98):
+	$(MK_DIR) $(OBJ_D)
+	$(MK_DIR) $(BLD_D)
+	$(MK_DIR) $(SRC_D)
+	$(MK_DIR) libs/include
+	$(MK_DIR) libs/static
+	$(MK_DIR) $(HTML_D)
+	$(MK_DIR) $(TEST_BLD_D)
+	$(MK_DIR) $(ASM_D)
+	
+
+run_%:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+
+# Not a target:
+html/main.html:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+.DEFAULT:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+clean:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 111):
+	rm -rf $(BLD_D)*
+	rm -rf $(HTML_D)*
+	rm -rf $(OBJ_D)*
+	rm -rf $(TEST_BLD_D)*
+	rm -rf $(ASM_D)*
+	rm -rf $(SRC_D)*.o
+
+print_information:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  Implicit/static pattern stem: ''
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# automatic
+# @ := print_information
+# automatic
+# % := 
+# automatic
+# * := 
+# automatic
+# + := 
+# automatic
+# | := 
+# automatic
+ 
+# < := 
+# automatic
+# ^ := 
+# automatic
+# ? := 
+# variable set hash-table stats:
+# Load=8/32=25%, Rehash=0, Collisions=1/12=8%
+#  recipe to execute (from 'Makefile', line 95):
+	@echo "Dettected OS: $(DETTECTED_OS)"
+
+main: obj/main.o
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 71):
+	$(CC_COMMAND) -o $(BLD_D)$@.bin $^ $(LINK_LIBS)
+
+init_project: create_folders
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 108):
+	touch ./src/main.c
+
+# files hash-table stats:
+# Load=22/1024=2%, Rehash=0, Collisions=0/54=0%
+# VPATH Search Paths
+
+# No 'vpath' search paths.
+
+# No general ('VPATH' variable) search path.
+
+# strcache buffers: 1 (0) / strings = 48 / storage = 485 B / avg = 10 B
+# current buf: size = 8162 B / used = 485 B / count = 48 / avg = 10 B
+
+# strcache performance: lookups = 79 / hit rate = 39%
+# hash-table stats:
+# Load=48/8192=1%, Rehash=0, Collisions=2/79=3%
+# Finished Make data base on Tue Oct 20 20:27:47 2020
+
+ 

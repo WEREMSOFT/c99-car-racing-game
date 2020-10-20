@@ -1,0 +1,11 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/home/werem/Documents/projects/c/c99-car-racing-game'
+echo "Dettected OS: Linux"
+echo "### Building tests for bin/main.bin START ###"
+gcc -O0 -Wpedantic -g -Wall -std=c99 -g3 -DOS_Linux  -Ilibs/include/ -Llibs/static/ -o bin/main.bin src/main.c -l:libraylib.a -lm -ldl -lpthread -lX11 -lxcb -lGL -lGLX -lXext -lGLdispatch -lXau -lXdmcp
+echo "### End ###"
+echo ""
+emcc -O2 -s -Wall -std=c99 -D_DEFAULT_SOURCE -Wno-missing-braces -s DISABLE_DEPRECATED_FIND_EVENT_TARGET_BEHAVIOR=0 -s USE_GLFW=3 -s TOTAL_MEMORY=67108864 -v -D OS_WEB -Ilibs/include/ -Llibs/static/ -g4 --source-map-base http://127.0.0.1:5500/html/ src/main.c -o html/main.html libs/static/libraylib.bc
+cp -r src html/src
+make: Leaving directory '/home/werem/Documents/projects/c/c99-car-racing-game'
+ 
