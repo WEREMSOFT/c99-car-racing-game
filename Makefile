@@ -67,7 +67,7 @@ endif
 
 all: print_information $(BLD_D)main.$(BIN_EXTENSION) web
 
-main: $(OBJ_FILES)
+main: $(SRC_FILES)
 	$(CC_COMMAND) -o $(BLD_D)$@.bin $^ $(LINK_LIBS)
 
 web: $(HTML_D)main.html
@@ -81,7 +81,7 @@ $(TEST_BLD_D)%.spec.$(BIN_EXTENSION): $(TEST_SRC_D)%.spec.c
 	@echo "### End ###"
 	@echo ""
 
-$(BLD_D)%.$(BIN_EXTENSION): $(SRC_D)%.c
+$(BLD_D)%.$(BIN_EXTENSION): $(SRC_FILES)
 	@echo "### Building tests for $(@) START ###"
 	$(CC_COMMAND) -o $@ $^ $(LINK_LIBS)
 	@echo "### End ###"
@@ -128,4 +128,4 @@ test_%: $(TEST_BLD_D)%.spec.$(BIN_EXTENSION)
 	$^
 
 $(ASM_D)%.S: $(SRC_D)%.c
-	$(CC_COMMAND) -o $@ $(CFLAGS) -S $^ $(LINK_LIBS)  
+	$(CC_COMMAND) -o $@ $(CFLAGS) -S $^ $(LINK_LIBS)
