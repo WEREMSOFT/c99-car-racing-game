@@ -34,6 +34,8 @@ int main(void)
         game_update(&context);
     }
 #endif
+
+    game_fini(context);
     CloseWindow();
 
     return 0;

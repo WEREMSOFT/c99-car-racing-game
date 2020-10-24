@@ -9,6 +9,7 @@ typedef struct game_context_t {
 } game_context_t;
 
 game_context_t game_init();
+void game_fini(game_context_t context);
 void game_update(game_context_t* game_context);
 
 #endif
@@ -28,6 +29,10 @@ game_context_t game_init(){
     return_value.level = level_init();
     
     return return_value;
+}
+
+void game_fini(game_context_t context){
+    level_fini(context.level);
 }
 
 #endif

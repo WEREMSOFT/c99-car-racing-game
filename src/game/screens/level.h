@@ -12,6 +12,7 @@ typedef struct level_t {
     unsigned int state;
     Camera3D camera;
     Model terrain;
+    Vector3 terrain_position;
     Vector3 car_position;
     void (*update)(struct level_t* level);
 } level_t;
@@ -32,22 +33,39 @@ level_t level_init(void){
     level_t return_value = {0};
 
     return_value.camera.fovy = 45.0f;
-    return_value.camera.target = (Vector3){.0f, .0f, .0f};
-    return_value.camera.position = (Vector3){0.0f, 10.0f, 10.0f};
+    return_value.camera.position = (Vector3){0.0f, 10.0f, 50.0f};
+    return_value.camera.target = (Vector3){0.0f, 0.0f, 20.0f};
     return_value.camera.up = (Vector3){0.0f, 1.0f, 0.0f};
     return_value.camera.type = CAMERA_PERSPECTIVE;
+    
+    return_value.car_position.z = 37.f;
+    return_value.terrain_position.y = -.5f;
 
-    return_value.terrain = LoadModelFromMesh(GenMeshCube(10.f, 0.2f, 10.f));
+    Image img = GenImageChecked(40, 40, 1, 1, GREEN, BLUE);
+    
+    return_value.terrain = LoadModelFromMesh(GenMeshCube(400.f, 0.2f, 400.f));
+
+    return_value.terrain.materials[0].maps[MAP_DIFFUSE].texture = LoadTextureFromImage(img);
+
+    UnloadImage(img);
 
     level_pass_to_state_playing(&return_value);
     return return_value;
 }
 
 void level_fini(level_t level) {
+    printf("unloading level data\n");
+    UnloadTexture(level.terrain.materials[0].maps[MAP_DIFFUSE].texture);
     UnloadModel(level.terrain);
 }
 
 static void process_state_playing(level_t* level){
+
+    level->terrain_position.z += 100.f * GetFrameTime();
+
+    if(level->terrain_position.z > 20.f) 
+        level->terrain_position.z -= 20.f;
+
     BeginDrawing();
     {
         ClearBackground(WHITE);
@@ -55,9 +73,9 @@ static void process_state_playing(level_t* level){
 
         BeginMode3D(level->camera);
         {
+            DrawModel(level->terrain, level->terrain_position, 1.f, WHITE);
             DrawCube(level->car_position, 1, 1, 1, RED);
             DrawCubeWires(level->car_position, 1, 1, 1, BLUE);
-            DrawGrid(10, 1);
         }
         EndMode3D();
 

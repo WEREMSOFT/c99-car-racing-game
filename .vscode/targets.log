@@ -1,12 +1,13 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # GNU Make 4.2.1
+ 
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2016 Free Software Foundation, Inc.
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sun Oct 25 00:31:55 2020
+# Make data base, printed on Sun Oct 25 00:38:29 2020
 
 # Variables
 
@@ -56,11 +57,11 @@ SNAP_DATA = /var/snap/code/48
 VTE_VERSION = 6003
 # environment
 VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
-# makefile (from 'Makefile', line 42)
+# makefile (from 'Makefile', line 40)
 EMSC_CFLAGS := -O2 -s -Wall -std=c99 -D_DEFAULT_SOURCE -Wno-missing-braces -s DISABLE_DEPRECATED_FIND_EVENT_TARGET_BEHAVIOR=0 -s USE_GLFW=3 -s TOTAL_MEMORY=67108864 -v -D OS_WEB
 # environment
 JOURNAL_STREAM = 9:52837
-# makefile (from 'Makefile', line 35)
+# makefile (from 'Makefile', line 33)
 CFLAGS := -O0 -Wpedantic -g -Wall -std=c99 -g3 -DOS_Linux 
 # environment
 XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
@@ -96,15 +97,15 @@ LC_NAME = en_GB.UTF-8
 GSETTINGS_SCHEMA_DIR = /snap/code/48/usr/share/glib-2.0/schemas
 # default
 MAKE_HOST := x86_64-pc-linux-gnu
-# makefile (from 'Makefile', line 31)
-OBJ_FILES := obj/main.o obj/game/game.o
+# makefile (from 'Makefile', line 29)
+OBJ_FILES := obj/main.o
 # environment
 PATH = /home/werem/Documents/projects/c/emsdk:/home/werem/Documents/projects/c/emsdk/upstream/emscripten:/home/werem/Documents/projects/c/emsdk/node/12.18.1_64bit/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/werem/.dotnet/tools
 # environment
 GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
 SESSION_MANAGER = local/werem-ubuntu:@/tmp/.ICE-unix/2012,unix/werem-ubuntu:/tmp/.ICE-unix/2012
-# makefile (from 'Makefile', line 41)
+# makefile (from 'Makefile', line 39)
 RAYLIB_PATH := /Users/pabloweremczuk/Documents/Proyectos/c/raylib
 # environment
 XDG_RUNTIME_DIR = /run/user/1000/snap.code
@@ -140,11 +141,11 @@ SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
 UNAME_S := Linux
 # environment
 DISPLAY = :0
-# makefile (from 'Makefile', line 44)
+# makefile (from 'Makefile', line 42)
 EMSC_STATIC_LIBS_D := libs/static/libraylib.bc
-# makefile (from 'Makefile', line 34)
+# makefile (from 'Makefile', line 32)
 STATIC_LIBS_D := -Llibs/static/
-# makefile (from 'Makefile', line 38)
+# makefile (from 'Makefile', line 36)
 BIN_EXTENSION = bin
 # environment
 SNAP_INSTANCE_KEY = 
@@ -178,9 +179,9 @@ SNAP_CONTEXT = JdDlJJ6rRKh92cKpQr8Bh3t1JqMC6MyfMwXmTG595Pq5
 +F = $(notdir $+)
 # makefile (from 'Makefile', line 18)
 SRC_D := src/
-# makefile (from 'Makefile', line 49)
+# makefile (from 'Makefile', line 47)
 EMSC_CC_COMMAND := emcc -O2 -s -Wall -std=c99 -D_DEFAULT_SOURCE -Wno-missing-braces -s DISABLE_DEPRECATED_FIND_EVENT_TARGET_BEHAVIOR=0 -s USE_GLFW=3 -s TOTAL_MEMORY=67108864 -v -D OS_WEB -Ilibs/include/ -Llibs/static/
-# makefile (from 'Makefile', line 36)
+# makefile (from 'Makefile', line 34)
 DEBUGGER := kdbg 
 # environment
 SNAP_USER_COMMON = /home/werem/snap/code/common
@@ -210,7 +211,7 @@ TEST_BLD_D := tests/bin/
 SNAP_USER_DATA = /home/werem/snap/code/48
 # environment
 SHLVL = 1
-# makefile (from 'Makefile', line 43)
+# makefile (from 'Makefile', line 41)
 EMSC_CC := emcc
 # makefile (from 'Makefile', line 17)
 CC := gcc
@@ -234,6 +235,7 @@ LC_MONETARY = en_GB.UTF-8
 XDG_CURRENT_DESKTOP = Unity
 # environment
 PIPE_LOGGING = true
+ 
 # automatic
 %D = $(patsubst %/,%,$(dir $%))
 # environment
@@ -252,7 +254,7 @@ OLDPWD = /home/werem/Documents/projects/c
 *F = $(notdir $*)
 # environment
 VSCODE_IPC_HOOK = /run/user/1000/snap.code/vscode-c2d9916e-1.50.1-main.sock
-# makefile (from 'Makefile', line 48)
+# makefile (from 'Makefile', line 46)
 CC_COMMAND := gcc -O0 -Wpedantic -g -Wall -std=c99 -g3 -DOS_Linux  -Ilibs/include/ -Llibs/static/
 # makefile
 MAKEFLAGS = pqrR
@@ -274,7 +276,6 @@ LC_IDENTIFICATION = en_GB.UTF-8
 QT_ACCESSIBILITY = 1
 # 'override' directive
 .SHELLSTATUS := 0
- 
 # default
 MAKEFILES := 
 # environment
@@ -289,7 +290,7 @@ LC_NUMERIC = en_GB.UTF-8
 LC_MEASUREMENT = en_GB.UTF-8
 # environment
 SNAP_NAME = code
-# makefile (from 'Makefile', line 37)
+# makefile (from 'Makefile', line 35)
 MK_DIR := mkdir -p
 # environment
 ELECTRON_NO_ATTACH_CONSOLE = 1
@@ -297,14 +298,14 @@ ELECTRON_NO_ATTACH_CONSOLE = 1
 OBJ_D := obj/
 # environment
 GJS_DEBUG_TOPICS = JS ERROR;JS LOG
-# makefile (from 'Makefile', line 56)
+# makefile (from 'Makefile', line 54)
 LINK_LIBS := -l:libraylib.a -lm -ldl -lpthread -lX11 -lxcb -lGL -lGLX -lXext -lGLdispatch -lXau -lXdmcp
 # environment
 GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/0b5e16ea_dfd2_4b28_aae2_a3572c202976
 # automatic
 ^F = $(notdir $^)
-# makefile (from 'Makefile', line 30)
-SRC_FILES := src/main.c src/game/game.c 
+# makefile (from 'Makefile', line 28)
+SRC_FILES := src/main.c
 # environment
 GNOME_TERMINAL_SERVICE = :1.166
 # default
@@ -331,12 +332,12 @@ TERM = xterm-256color
 EMSDK = /home/werem/Documents/projects/c/emsdk
 # environment
 VSCODE_PID = 78784
-# makefile (from 'Makefile', line 33)
+# makefile (from 'Makefile', line 31)
 INCLUDE_D := -Ilibs/include/
-# makefile (from 'Makefile', line 57)
+# makefile (from 'Makefile', line 55)
 TEST_LINK_LIBS := -lunity 
 # variable set hash-table stats:
-# Load=162/1024=16%, Rehash=0, Collisions=35/245=14%
+# Load=162/1024=16%, Rehash=0, Collisions=35/239=15%
 
 # Pattern-specific Variable Values
 
@@ -347,57 +348,56 @@ TEST_LINK_LIBS := -lunity
 # . (device 66309, inode 1461396): 15 files, no impossibilities.
 # bin (device 66309, inode 1463661): No files, no impossibilities so far.
 # tests/bin (device 66309, inode 1463668): No files, no impossibilities so far.
-# src/game/screens (device 66309, inode 1463722): 3 files, no impossibilities.
-# src/game (device 66309, inode 1463697): 5 files, no impossibilities.
 # src (device 66309, inode 1463590): 4 files, no impossibilities.
 # tests (device 66309, inode 1463597): No files, no impossibilities so far.
 
-# 27 files, no impossibilities in 7 directories.
+# 19 files, no impossibilities in 5 directories.
 
 # Implicit Rules
 
 obj/%.o: src/%.c
-#  recipe to execute (from 'Makefile', line 78):
+#  recipe to execute (from 'Makefile', line 76):
 	$(CC_COMMAND) -c -o $@ $^
+ 
 
 tests/bin/%.spec.bin: tests/%.spec.c
-#  recipe to execute (from 'Makefile', line 81):
+#  recipe to execute (from 'Makefile', line 79):
 	@echo "### Building tests for $(@) START ###"
 	$(CC_COMMAND) -o $@ $^ $(TEST_LINK_LIBS) $(LINK_LIBS)
 	@echo "### End ###"
 	@echo ""
 
-bin/%.bin: src/main.c src/game/game.c
-#  recipe to execute (from 'Makefile', line 87):
+bin/%.bin: src/main.c
+#  recipe to execute (from 'Makefile', line 85):
 	@echo "### Building tests for $(@) START ###"
 	$(CC_COMMAND) -o $@ $^ $(LINK_LIBS)
 	@echo "### End ###"
 	@echo ""
 
-docs/%.html: src/main.c src/game/game.c
-#  recipe to execute (from 'Makefile', line 93):
+docs/%.html: src/main.c
+#  recipe to execute (from 'Makefile', line 91):
 	$(EMSC_CC_COMMAND) -g4 --source-map-base http://127.0.0.1:5500/html/ $^ -o $@ $(EMSC_STATIC_LIBS_D)
 	cp -r src html/src
 
 run_perf_%.bin: bin/%.bin
-#  recipe to execute (from 'Makefile', line 121):
+#  recipe to execute (from 'Makefile', line 119):
 	perf stat -e task-clock,cycles,instructions,cache-references,cache-misses $^
 	
 
 debug_%: bin/%.bin
-#  recipe to execute (from 'Makefile', line 124):
+#  recipe to execute (from 'Makefile', line 122):
 	$(DEBUGGER) $^
 
 run_%: bin/%.bin
-#  recipe to execute (from 'Makefile', line 127):
+#  recipe to execute (from 'Makefile', line 125):
 	$^
 
 test_%: tests/bin/%.spec.bin
-#  recipe to execute (from 'Makefile', line 130):
+#  recipe to execute (from 'Makefile', line 128):
 	$^
 
 asm/%.S: src/%.c
-#  recipe to execute (from 'Makefile', line 133):
+#  recipe to execute (from 'Makefile', line 131):
 	$(CC_COMMAND) -o $@ $(CFLAGS) -S $^ $(LINK_LIBS)
 
 # 9 implicit rules, 0 (0.0%) terminal.
@@ -455,6 +455,7 @@ all: print_information bin/main.bin web
 #  File has not been updated.
 
 create_folder_structure:
+ 
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
 #  File does not exist.
@@ -475,7 +476,7 @@ web: docs/main.html
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2020-10-25 00:24:32.792133247
+#  Last modified 2020-10-25 00:37:26.963832235
 #  File has been updated.
 #  Successfully updated.
 
@@ -489,7 +490,7 @@ create_folders:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 100):
+#  recipe to execute (from 'Makefile', line 98):
 	$(MK_DIR) $(OBJ_D)
 	$(MK_DIR) $(BLD_D)
 	$(MK_DIR) $(SRC_D)
@@ -528,7 +529,7 @@ clean:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 113):
+#  recipe to execute (from 'Makefile', line 111):
 	rm -rf $(BLD_D)*
 	rm -rf $(HTML_D)*
 	rm -rf $(OBJ_D)*
@@ -536,13 +537,8 @@ clean:
 	rm -rf $(ASM_D)*
 	rm -rf $(SRC_D)*.o
 
-# Not a target:
-src/game/game.c:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
 print_information:
+ 
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
 #  Implicit/static pattern stem: ''
@@ -554,7 +550,6 @@ print_information:
 # automatic
 # % := 
 # automatic
- 
 # * := 
 # automatic
 # + := 
@@ -568,14 +563,14 @@ print_information:
 # ? := 
 # variable set hash-table stats:
 # Load=8/32=25%, Rehash=0, Collisions=1/12=8%
-#  recipe to execute (from 'Makefile', line 97):
+#  recipe to execute (from 'Makefile', line 95):
 	@echo "Dettected OS: $(DETTECTED_OS)"
 
-main: src/main.c src/game/game.c
+main: src/main.c
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 73):
+#  recipe to execute (from 'Makefile', line 71):
 	$(CC_COMMAND) -o $(BLD_D)$@.bin $^ $(LINK_LIBS)
 
 init_project: create_folders
@@ -583,23 +578,23 @@ init_project: create_folders
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 110):
+#  recipe to execute (from 'Makefile', line 108):
 	touch ./src/main.c
 
 # files hash-table stats:
-# Load=23/1024=2%, Rehash=0, Collisions=0/56=0%
+# Load=22/1024=2%, Rehash=0, Collisions=0/54=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 58 / storage = 566 B / avg = 9 B
-# current buf: size = 8162 B / used = 566 B / count = 58 / avg = 9 B
+# strcache buffers: 1 (0) / strings = 51 / storage = 494 B / avg = 9 B
+# current buf: size = 8162 B / used = 494 B / count = 51 / avg = 9 B
 
-# strcache performance: lookups = 97 / hit rate = 40%
+# strcache performance: lookups = 84 / hit rate = 39%
 # hash-table stats:
-# Load=58/8192=1%, Rehash=0, Collisions=4/97=4%
-# Finished Make data base on Sun Oct 25 00:31:55 2020
+# Load=51/8192=1%, Rehash=0, Collisions=2/84=2%
+# Finished Make data base on Sun Oct 25 00:38:29 2020
 
  
