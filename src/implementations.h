@@ -1,7 +1,7 @@
 #ifndef __IMPLEMENTATIONS_H__
 #define __IMPLEMENTATIONS_H__
 
-
+#include "game/constants.h"
 #define __LEVEL_H_IMPLEMENTATION__
 #include "game/screens/level.h"
 #define __MENU_H_IMPLEMENTATION__

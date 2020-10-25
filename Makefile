@@ -63,7 +63,7 @@ endif
 # Build Targets
 #//////////////
 
-.PHONY: web test run_% debug_optimized debug_unoptimized print_information create_folder_structure run_html_u run_html_o run_performance_test init_project
+.PHONY: clean_run web test run_% debug_optimized debug_unoptimized print_information create_folder_structure run_html_u run_html_o run_performance_test init_project
 
 all: print_information $(BLD_D)main.$(BIN_EXTENSION) web
 
@@ -123,6 +123,10 @@ debug_%: $(BLD_D)%.$(BIN_EXTENSION)
 
 run_%: $(BLD_D)%.$(BIN_EXTENSION)
 	$^
+
+clean_run:
+	@make clean
+	@make run_main
 
 test_%: $(TEST_BLD_D)%.spec.$(BIN_EXTENSION)
 	$^

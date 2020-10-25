@@ -5,6 +5,9 @@
 
 #include "screen.h"
 
+#define CAR_LATERAL_SPEED 6.f
+#define CAR_LERP_SPEED 0.3f
+
 typedef struct level_t {
     screen_t screen;
     Model terrain;
@@ -98,15 +101,15 @@ static void process_state_playing(level_t* level){
             level->screen.camera = camera_init();
 
         if (IsKeyPressed(KEY_LEFT))
-            level->car_target_position.x -= 6.0f;
+            level->car_target_position.x -= CAR_LATERAL_SPEED;
         if (IsKeyPressed(KEY_RIGHT))
-            level->car_target_position.x += 6.0f;
+            level->car_target_position.x += CAR_LATERAL_SPEED;
         if (IsKeyPressed(KEY_UP))
-            level->car_target_position.z -= 6.0f;
+            level->car_target_position.z -= CAR_LATERAL_SPEED;
         if (IsKeyPressed(KEY_DOWN))
-            level->car_target_position.z += 1.0f;
+            level->car_target_position.z += CAR_LATERAL_SPEED;
 
-        level->car_position = Vector3Lerp(level->car_position, level->car_target_position, 0.3f);
+        level->car_position = Vector3Lerp(level->car_position, level->car_target_position, CAR_LERP_SPEED);
     }
     EndDrawing();
 }

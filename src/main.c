@@ -1,10 +1,6 @@
 #include <stdio.h>
 #include <raylib.h>
 
-#define PETROL CLITERAL(Color){ 0, 0x4A, 0x6D, 0xFF }
-#define WIDTH 800
-#define HEIGHT 600
-
 #include "implementations.h"
 
 #ifdef OS_WEB

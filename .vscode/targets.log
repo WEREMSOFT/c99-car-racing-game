@@ -1,13 +1,13 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # GNU Make 4.2.1
- 
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2016 Free Software Foundation, Inc.
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
+ 
 
-# Make data base, printed on Sun Oct 25 00:38:29 2020
+# Make data base, printed on Sun Oct 25 15:10:35 2020
 
 # Variables
 
@@ -86,7 +86,7 @@ XDG_DATA_DIRS = /usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/d
 # environment
 DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus
 # environment
-VSCODE_LOGS = /home/werem/.config/Code/logs/20201025T003153
+VSCODE_LOGS = /home/werem/.config/Code/logs/20201025T120812
 # environment
 MANAGERPID = 1794
 # environment
@@ -218,7 +218,7 @@ CC := gcc
 # environment
 GNOME_SHELL_SESSION_MODE = ubuntu
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/snap.code/vscode-ipc-b350bc72-0ec5-48d8-b8e4-923ec905be98.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/snap.code/vscode-ipc-c65bf068-ad20-4c71-bb27-753041ac31f5.sock
 # default
 MAKE_VERSION := 4.2.1
 # environment
@@ -235,7 +235,6 @@ LC_MONETARY = en_GB.UTF-8
 XDG_CURRENT_DESKTOP = Unity
 # environment
 PIPE_LOGGING = true
- 
 # automatic
 %D = $(patsubst %/,%,$(dir $%))
 # environment
@@ -331,13 +330,14 @@ TERM = xterm-256color
 # environment
 EMSDK = /home/werem/Documents/projects/c/emsdk
 # environment
-VSCODE_PID = 78784
+VSCODE_PID = 122274
 # makefile (from 'Makefile', line 31)
 INCLUDE_D := -Ilibs/include/
 # makefile (from 'Makefile', line 55)
 TEST_LINK_LIBS := -lunity 
 # variable set hash-table stats:
 # Load=162/1024=16%, Rehash=0, Collisions=35/239=15%
+ 
 
 # Pattern-specific Variable Values
 
@@ -345,20 +345,19 @@ TEST_LINK_LIBS := -lunity
 
 # Directories
 
-# . (device 66309, inode 1461396): 15 files, no impossibilities.
+# . (device 66309, inode 1461396): 16 files, no impossibilities.
 # bin (device 66309, inode 1463661): No files, no impossibilities so far.
 # tests/bin (device 66309, inode 1463668): No files, no impossibilities so far.
-# src (device 66309, inode 1463590): 4 files, no impossibilities.
+# src (device 66309, inode 1463590): 5 files, no impossibilities.
 # tests (device 66309, inode 1463597): No files, no impossibilities so far.
 
-# 19 files, no impossibilities in 5 directories.
+# 21 files, no impossibilities in 5 directories.
 
 # Implicit Rules
 
 obj/%.o: src/%.c
 #  recipe to execute (from 'Makefile', line 76):
 	$(CC_COMMAND) -c -o $@ $^
- 
 
 tests/bin/%.spec.bin: tests/%.spec.c
 #  recipe to execute (from 'Makefile', line 79):
@@ -393,11 +392,11 @@ run_%: bin/%.bin
 	$^
 
 test_%: tests/bin/%.spec.bin
-#  recipe to execute (from 'Makefile', line 128):
+#  recipe to execute (from 'Makefile', line 132):
 	$^
 
 asm/%.S: src/%.c
-#  recipe to execute (from 'Makefile', line 131):
+#  recipe to execute (from 'Makefile', line 135):
 	$(CC_COMMAND) -o $@ $(CFLAGS) -S $^ $(LINK_LIBS)
 
 # 9 implicit rules, 0 (0.0%) terminal.
@@ -449,13 +448,12 @@ all: print_information bin/main.bin web
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/4=0%
 
-.PHONY: web test run_% debug_optimized debug_unoptimized print_information create_folder_structure run_html_u run_html_o run_performance_test init_project
+.PHONY: clean_run web test run_% debug_optimized debug_unoptimized print_information create_folder_structure run_html_u run_html_o run_performance_test init_project
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
 create_folder_structure:
- 
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
 #  File does not exist.
@@ -476,7 +474,7 @@ web: docs/main.html
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2020-10-25 00:37:26.963832235
+#  Last modified 2020-10-25 14:45:32.046436059
 #  File has been updated.
 #  Successfully updated.
 
@@ -525,6 +523,15 @@ docs/main.html:
 #  Modification time never checked.
 #  File has not been updated.
 
+clean_run:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 128):
+	@make clean
+	@make run_main
+
 clean:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
@@ -538,7 +545,6 @@ clean:
 	rm -rf $(SRC_D)*.o
 
 print_information:
- 
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
 #  Implicit/static pattern stem: ''
@@ -567,6 +573,7 @@ print_information:
 	@echo "Dettected OS: $(DETTECTED_OS)"
 
 main: src/main.c
+ 
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -582,19 +589,19 @@ init_project: create_folders
 	touch ./src/main.c
 
 # files hash-table stats:
-# Load=22/1024=2%, Rehash=0, Collisions=0/54=0%
+# Load=23/1024=2%, Rehash=0, Collisions=0/57=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 51 / storage = 494 B / avg = 9 B
-# current buf: size = 8162 B / used = 494 B / count = 51 / avg = 9 B
+# strcache buffers: 1 (0) / strings = 54 / storage = 533 B / avg = 9 B
+# current buf: size = 8162 B / used = 533 B / count = 54 / avg = 9 B
 
-# strcache performance: lookups = 84 / hit rate = 39%
+# strcache performance: lookups = 89 / hit rate = 39%
 # hash-table stats:
-# Load=51/8192=1%, Rehash=0, Collisions=2/84=2%
-# Finished Make data base on Sun Oct 25 00:38:29 2020
+# Load=54/8192=1%, Rehash=0, Collisions=2/89=2%
+# Finished Make data base on Sun Oct 25 15:10:35 2020
 
  
