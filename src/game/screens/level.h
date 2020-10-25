@@ -6,16 +6,28 @@
 #include "screen.h"
 
 #define CAR_LATERAL_SPEED 6.f
+#define TREE_RADIUS 15.f
 #define CAR_LERP_SPEED 0.3f
+#define CAR_Z_POSITION 37.f
+#define TREE_COUNT 30
+#define TERRAIN_SIDE_SIZE 400.f
+
+typedef enum models_e {
+    MODELS_TREE,
+    MODELS_CAR_HERO,
+    MODELS_TERRAIN,
+    MODELS_CAR_ENEMY,
+    MODELS_COUNT,
+} models_e;
 
 typedef struct level_t {
     screen_t screen;
-    Model terrain;
-    Model car_hero;
-    Model car_enemy;
+    Model models[MODELS_COUNT];
     Vector3 terrain_position;
     Vector3 car_target_position;
     Vector3 car_position;
+    Vector3 tree_positions[TREE_COUNT];
+    float tree_offset;
     void (*update)(struct level_t* level);
 } level_t;
 
@@ -30,7 +42,7 @@ void level_pass_to_state_dead(level_t* level);
 #undef __LEVEL_H_IMPLEMENTATION__
 #include <stdio.h>
 #include <raylib.h>
-#include "screen.h"
+#include <math.h>
 #include "screen_utils.h"
 
 level_t level_init(void){
@@ -38,20 +50,33 @@ level_t level_init(void){
  
     return_value.screen.camera = camera_init();
     
-    return_value.car_target_position = return_value.car_position = (Vector3){0, 0, 37.f};
+    return_value.car_target_position = return_value.car_position = (Vector3){0, 0, CAR_Z_POSITION};
     return_value.terrain_position.y = -.5f;
 
     Image img_terrain = GenImageChecked(40, 40, 1, 1, DARKGRAY, GRAY);
     Image img_car = GenImageChecked(2, 2, 1, 1, PETROL, GRAY);
+    Image img_car_enemy = GenImageChecked(2, 2, 1, 1, BLUE, RED);
+    Image img_tree = GenImageChecked(2, 2, 1, 1, GREEN, DARKGREEN);
     
-    return_value.terrain = LoadModelFromMesh(GenMeshCube(400.f, 0.2f, 400.f));
-    return_value.car_hero = LoadModelFromMesh(GenMeshCube(4.f, 1.f, 6.f));
+    return_value.models[MODELS_TERRAIN] = LoadModelFromMesh(GenMeshCube(TERRAIN_SIDE_SIZE, 0.2f, TERRAIN_SIDE_SIZE));
+    return_value.models[MODELS_CAR_HERO] = LoadModelFromMesh(GenMeshCube(4.f, 1.f, 6.f));
+    return_value.models[MODELS_CAR_ENEMY] = LoadModelFromMesh(GenMeshCube(4.f, 1.f, 6.f));
+    return_value.models[MODELS_TREE] = LoadModelFromMesh(GenMeshCylinder(1.f, 5.f, 4));
 
-    return_value.terrain.materials[0].maps[MAP_DIFFUSE].texture = LoadTextureFromImage(img_terrain);
-    return_value.car_hero.materials[0].maps[MAP_DIFFUSE].texture = LoadTextureFromImage(img_car);
+    return_value.models[MODELS_TERRAIN].materials[0].maps[MAP_DIFFUSE].texture = LoadTextureFromImage(img_terrain);
+    return_value.models[MODELS_CAR_HERO].materials[0].maps[MAP_DIFFUSE].texture = LoadTextureFromImage(img_car);
+    return_value.models[MODELS_CAR_ENEMY].materials[0].maps[MAP_DIFFUSE].texture = LoadTextureFromImage(img_car_enemy);
+    return_value.models[MODELS_TREE].materials[0].maps[MAP_DIFFUSE].texture = LoadTextureFromImage(img_tree);
 
     UnloadImage(img_terrain);
     UnloadImage(img_car);
+    UnloadImage(img_tree);
+    UnloadImage(img_car_enemy);
+
+    for(int i = 0; i < TREE_COUNT; i++){
+        return_value.tree_positions[i].z = i * 20;
+        return_value.tree_positions[i].x = TREE_RADIUS;
+    }
 
     level_pass_to_state_playing(&return_value);
     return return_value;
@@ -59,8 +84,10 @@ level_t level_init(void){
 
 void level_fini(level_t level) {
     printf("unloading level data\n");
-    UnloadTexture(level.terrain.materials[0].maps[MAP_DIFFUSE].texture);
-    UnloadModel(level.terrain);
+    for(int i = 0; i < MODELS_COUNT; i++){
+        UnloadTexture(level.models[i].materials[0].maps[MAP_DIFFUSE].texture);
+        UnloadModel(level.models[i]);
+    }
 }
 
 static void process_state_playing(level_t* level){
@@ -77,8 +104,16 @@ static void process_state_playing(level_t* level){
 
         BeginMode3D(level->screen.camera);
         {
-            DrawModel(level->terrain, level->terrain_position, 1.f, WHITE);
-            DrawModel(level->car_hero, level->car_position, 1.f, WHITE);
+            DrawModel(level->models[MODELS_TERRAIN], level->terrain_position, 1.f, WHITE);
+            DrawModel(level->models[MODELS_CAR_HERO], level->car_position, 1.f, WHITE);
+
+            for(int i = 0; i < TREE_COUNT; i++){
+                level->tree_positions[i].z = i * 10 + level->terrain_position.z - 200;
+                DrawModel(level->models[MODELS_TREE], level->tree_positions[i], 1.f, WHITE);
+                level->tree_positions[i].x *= -1;
+                DrawModel(level->models[MODELS_TREE], level->tree_positions[i], 1.f, WHITE);
+            }
+
         }
         EndMode3D();
 
@@ -109,6 +144,7 @@ static void process_state_playing(level_t* level){
         if (IsKeyPressed(KEY_DOWN))
             level->car_target_position.z += CAR_LATERAL_SPEED;
 
+        level->car_target_position.x = fmin(CAR_LATERAL_SPEED, fmax(level->car_target_position.x, -CAR_LATERAL_SPEED));
         level->car_position = Vector3Lerp(level->car_position, level->car_target_position, CAR_LERP_SPEED);
     }
     EndDrawing();
