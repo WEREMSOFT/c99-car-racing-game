@@ -1,15 +1,16 @@
 #include <stdio.h>
 #include <raylib.h>
 
-#define __GAME_H_IMPLEMENTATION__
-#include "game/game.h"
+#define PETROL CLITERAL(Color){ 0, 0x4A, 0x6D, 0xFF }
+#define WIDTH 800
+#define HEIGHT 600
+
+#include "implementations.h"
 
 #ifdef OS_WEB
 #include <emscripten/emscripten.h>
 #endif
 
-#define WIDTH 800
-#define HEIGHT 600
 
 int main(void)
 {

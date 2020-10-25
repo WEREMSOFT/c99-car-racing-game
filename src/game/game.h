@@ -1,7 +1,6 @@
 #ifndef __GAME_H__
 #define __GAME_H__
 
-#define __LEVEL_H_IMPLEMENTATION__
 #include "screens/level.h"
 
 typedef struct game_context_t {
