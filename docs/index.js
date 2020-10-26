@@ -36,8 +36,8 @@ var Module = typeof Module !== 'undefined' ? Module : {};
       } else {
         throw 'using preloaded data can only be done on a web page or in a web worker';
       }
-      var PACKAGE_NAME = 'docs/main.data';
-      var REMOTE_PACKAGE_BASE = 'main.data';
+      var PACKAGE_NAME = 'docs/index.data';
+      var REMOTE_PACKAGE_BASE = 'index.data';
       if (typeof Module['locateFilePackage'] === 'function' && !Module['locateFile']) {
         Module['locateFile'] = Module['locateFilePackage'];
         err('warning: you defined Module.locateFilePackage, that has been renamed to Module.locateFile (using your locateFilePackage for now)');
@@ -171,10 +171,10 @@ Module['FS_createPath']('/assets/shaders', 'glsl330', true, true);
             for (var i = 0; i < files.length; ++i) {
               DataRequest.prototype.requests[files[i].filename].onload();
             }
-                Module['removeRunDependency']('datafile_docs/main.data');
+                Module['removeRunDependency']('datafile_docs/index.data');
 
       };
-      Module['addRunDependency']('datafile_docs/main.data');
+      Module['addRunDependency']('datafile_docs/index.data');
     
       if (!Module.preloadResults) Module.preloadResults = {};
     
@@ -195,7 +195,7 @@ Module['FS_createPath']('/assets/shaders', 'glsl330', true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/assets/shaders/glsl100/base_lighting.vs", "start": 0, "end": 1578, "audio": 0}, {"filename": "/assets/shaders/glsl100/lighting.fs", "start": 1578, "end": 3630, "audio": 0}, {"filename": "/assets/shaders/glsl330/base_lighting.vs", "start": 3630, "end": 4407, "audio": 0}, {"filename": "/assets/shaders/glsl330/lighting.fs", "start": 4407, "end": 6449, "audio": 0}], "remote_package_size": 6449, "package_uuid": "1c200ce4-e15b-41ed-9a02-7a05474b57d2"});
+   loadPackage({"files": [{"filename": "/assets/shaders/glsl100/base_lighting.vs", "start": 0, "end": 1578, "audio": 0}, {"filename": "/assets/shaders/glsl100/lighting.fs", "start": 1578, "end": 3630, "audio": 0}, {"filename": "/assets/shaders/glsl330/base_lighting.vs", "start": 3630, "end": 4407, "audio": 0}, {"filename": "/assets/shaders/glsl330/lighting.fs", "start": 4407, "end": 6449, "audio": 0}], "remote_package_size": 6449, "package_uuid": "cc424f20-8137-4bf4-97dd-b9a9cacc339d"});
   
   })();
   
@@ -1750,7 +1750,7 @@ function isFileURI(filename) {
 
 
 
-var wasmBinaryFile = 'main.wasm';
+var wasmBinaryFile = 'index.wasm';
 if (!isDataURI(wasmBinaryFile)) {
   wasmBinaryFile = locateFile(wasmBinaryFile);
 }

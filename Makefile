@@ -70,7 +70,7 @@ all: print_information $(BLD_D)main.$(BIN_EXTENSION) web
 main: $(SRC_FILES)
 	$(CC_COMMAND) -o $(BLD_D)$@.bin $^ $(LINK_LIBS)
 
-web: $(HTML_D)main.html
+web: $(HTML_D)index.html
 
 $(OBJ_D)%.o: $(SRC_D)%.c
 	$(CC_COMMAND) -c -o $@ $^
