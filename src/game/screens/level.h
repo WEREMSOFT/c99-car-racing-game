@@ -7,7 +7,7 @@
 
 #define CAR_LATERAL_SPEED 6.f
 #define TREE_RADIUS 15.f
-#define CAR_LERP_SPEED 0.3f
+#define CAR_LERP_SPEED 20.0f
 #define CAR_Z_POSITION 37.f
 #define TREE_COUNT 30
 #define TERRAIN_SIDE_SIZE 400.f
@@ -175,7 +175,7 @@ static void process_state_playing(level_t* level){
             level->car_target_position.z += CAR_LATERAL_SPEED;
 
         level->car_target_position.x = fmin(CAR_LATERAL_SPEED, fmax(level->car_target_position.x, -CAR_LATERAL_SPEED));
-        level->car_position = Vector3Lerp(level->car_position, level->car_target_position, CAR_LERP_SPEED);
+        level->car_position = Vector3Lerp(level->car_position, level->car_target_position, CAR_LERP_SPEED * GetFrameTime());
     }
     EndDrawing();
 }
