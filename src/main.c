@@ -7,7 +7,6 @@
 #include <emscripten/emscripten.h>
 #endif
 
-
 int main(void)
 {
 #ifdef OS_Windows_NT

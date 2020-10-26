@@ -1,6 +1,15 @@
 #ifndef __IMPLEMENTATIONS_H__
 #define __IMPLEMENTATIONS_H__
 
+#if defined(OS_WEB)
+#define GLSL_VERSION            100
+#else   // PLATFORM_WEB
+#define GLSL_VERSION            330
+#endif
+
+#define RLIGHTS_IMPLEMENTATION
+#include "rlights.h"
+
 #include "game/constants.h"
 #define __LEVEL_H_IMPLEMENTATION__
 #include "game/screens/level.h"

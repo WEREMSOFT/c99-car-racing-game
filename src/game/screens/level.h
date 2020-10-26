@@ -31,6 +31,9 @@ typedef struct level_t {
     Vector3 terrain_position;
     Vector3 car_target_position;
     Vector3 car_position;
+    Shader shader;
+    Shader shader_default;
+    Light light_1;
     Vector3 tree_positions[TREE_COUNT];
     Vector3 car_enemy_position[CAR_ENEMY_COUNT];
     float car_speed;
@@ -43,6 +46,7 @@ level_t level_init(void);
 void level_fini(level_t level);
 void level_pass_to_state_playing(level_t* level);
 void level_pass_to_state_dead(level_t* level);
+void shader_init(level_t* level);
 
 #endif
 
@@ -56,6 +60,8 @@ void level_pass_to_state_dead(level_t* level);
 level_t level_init(void){
     level_t return_value = {0};
  
+    shader_init(&return_value);
+
     return_value.car_enemy_active_count = 1;
 
     return_value.screen.camera = camera_init();
@@ -77,6 +83,11 @@ level_t level_init(void){
     return_value.models[MODELS_CAR_HERO].materials[0].maps[MAP_DIFFUSE].texture = LoadTextureFromImage(img_car);
     return_value.models[MODELS_CAR_ENEMY].materials[0].maps[MAP_DIFFUSE].texture = LoadTextureFromImage(img_car_enemy);
     return_value.models[MODELS_TREE].materials[0].maps[MAP_DIFFUSE].texture = LoadTextureFromImage(img_tree);
+
+    return_value.models[MODELS_TERRAIN].materials[0].shader = return_value.shader;
+    return_value.models[MODELS_CAR_HERO].materials[0].shader = return_value.shader;
+    return_value.models[MODELS_CAR_ENEMY].materials[0].shader = return_value.shader;
+    return_value.models[MODELS_TREE].materials[0].shader = return_value.shader;
 
     UnloadImage(img_terrain);
     UnloadImage(img_car);
@@ -104,8 +115,6 @@ void level_fini(level_t level) {
 }
 
 static void process_state_playing(level_t* level){
-
-
     if(level->car_enemy_active_count < CAR_ENEMY_COUNT && level->car_enemy_position[level->car_enemy_active_count - 1].z - level->car_enemy_position[level->car_enemy_active_count].z > CAR_LENGTH * 4)
         level->car_enemy_active_count++;
 
@@ -162,6 +171,11 @@ static void process_state_playing(level_t* level){
         if (IsKeyDown(KEY_KP_7))
             level->screen.camera.fovy -= 1.f;
 
+        if (IsKeyDown(KEY_KP_1))
+            level->screen.camera.position.x += .1f;
+        if (IsKeyDown(KEY_KP_3))
+            level->screen.camera.position.x -= .1f;
+
         if (IsKeyDown(KEY_KP_5))
             level->screen.camera = camera_init();
 
@@ -190,5 +204,18 @@ void level_pass_to_state_playing(level_t* level) {
 
 void level_pass_to_state_dead(level_t* level) {
     level->update = process_state_dead;
+}
+
+void shader_init(level_t* level){
+    level->shader = LoadShader(FormatText("./assets/shaders/glsl%i/base_lighting.vs", GLSL_VERSION),
+                            FormatText("./assets/shaders/glsl%i/lighting.fs", GLSL_VERSION));
+    level->shader.locs[LOC_MATRIX_MODEL] = GetShaderLocation(level->shader, "matModel");
+    level->shader.locs[LOC_VECTOR_VIEW] = GetShaderLocation(level->shader, "viewPos");
+
+    int ambientLoc = GetShaderLocation(level->shader, "ambient");
+    SetShaderValue(level->shader, ambientLoc, (float[4]){ 0.2f, 0.2f, 0.2f, 1.0f }, UNIFORM_VEC4);
+
+    level->light_1 = CreateLight(LIGHT_POINT, (Vector3){ -60.f, 100.f, 100.f}, Vector3Zero(), WHITE, level->shader);
+    UpdateLightValues(level->shader, level->light_1);
 }
 #endif
