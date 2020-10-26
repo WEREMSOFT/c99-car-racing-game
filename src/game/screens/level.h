@@ -12,9 +12,9 @@
 #define TREE_COUNT 30
 #define TERRAIN_SIDE_SIZE 400.f
 #define CAR_INITIAL_SPEED 0.f
-#define CAR_ACCELERATION 10.f
-#define CAR_MAX_SPEED 150.f
-#define CAR_ENEMY_COUNT 5
+#define CAR_ACCELERATION 7.f
+#define CAR_MAX_SPEED 200.f
+#define CAR_ENEMY_COUNT 7
 #define CAR_LENGTH 6.f
 
 typedef enum models_e {
@@ -27,10 +27,14 @@ typedef enum models_e {
 
 typedef struct level_t {
     screen_t screen;
+    Camera3D camera_shadow_map;
+    RenderTexture2D render_texture;
     Model models[MODELS_COUNT];
     Vector3 terrain_position;
     Vector3 car_target_position;
     Vector3 car_position;
+    BoundingBox car_hero_bounding_box;
+    BoundingBox car_enemy_bounding_box;
     Shader shader;
     Shader shader_default;
     Light light_1;
@@ -62,12 +66,19 @@ level_t level_init(void){
  
     shader_init(&return_value);
 
+    return_value.camera_shadow_map.fovy = 112.0f;
+    return_value.camera_shadow_map.target = (Vector3){.0f, .0f, .0f};
+    return_value.camera_shadow_map.position = return_value.light_1.position;
+    return_value.camera_shadow_map.up = (Vector3){0.0f, 0.0f,-1.0f};
+    return_value.camera_shadow_map.type = CAMERA_PERSPECTIVE;
+
+    return_value.terrain_position.y = -1.f;
+
     return_value.car_enemy_active_count = 1;
 
     return_value.screen.camera = camera_init();
     
     return_value.car_target_position = return_value.car_position = (Vector3){0, 0, CAR_Z_POSITION};
-    return_value.terrain_position.y = -.5f;
 
     Image img_terrain = GenImageChecked(40, 40, 1, 1, DARKGRAY, GRAY);
     Image img_car = GenImageChecked(2, 2, 1, 1, PETROL, GRAY);
@@ -80,10 +91,15 @@ level_t level_init(void){
     return_value.models[MODELS_TREE] = LoadModelFromMesh(GenMeshCylinder(1.f, 5.f, 4));
 
     return_value.models[MODELS_TERRAIN].materials[0].maps[MAP_DIFFUSE].texture = LoadTextureFromImage(img_terrain);
+
     return_value.models[MODELS_CAR_HERO].materials[0].maps[MAP_DIFFUSE].texture = LoadTextureFromImage(img_car);
     return_value.models[MODELS_CAR_ENEMY].materials[0].maps[MAP_DIFFUSE].texture = LoadTextureFromImage(img_car_enemy);
     return_value.models[MODELS_TREE].materials[0].maps[MAP_DIFFUSE].texture = LoadTextureFromImage(img_tree);
 
+    return_value.render_texture = LoadRenderTexture(2048, 2048);
+
+    // return_value.models[MODELS_TERRAIN].materials[0].maps[MAP_DIFFUSE].texture = return_value.render_texture.texture;
+    
     return_value.models[MODELS_TERRAIN].materials[0].shader = return_value.shader;
     return_value.models[MODELS_CAR_HERO].materials[0].shader = return_value.shader;
     return_value.models[MODELS_CAR_ENEMY].materials[0].shader = return_value.shader;
@@ -103,6 +119,10 @@ level_t level_init(void){
         return_value.car_enemy_position[i].z = TERRAIN_SIDE_SIZE / -2;
 
     level_pass_to_state_playing(&return_value);
+
+    return_value.car_hero_bounding_box = MeshBoundingBox(return_value.models[MODELS_CAR_HERO].meshes[0]);
+    return_value.car_enemy_bounding_box = MeshBoundingBox(return_value.models[MODELS_CAR_ENEMY].meshes[0]);
+
     return return_value;
 }
 
@@ -115,6 +135,9 @@ void level_fini(level_t level) {
 }
 
 static void process_state_playing(level_t* level){
+    UpdateLightValues(level->shader, level->light_1);
+
+
     if(level->car_enemy_active_count < CAR_ENEMY_COUNT && level->car_enemy_position[level->car_enemy_active_count - 1].z - level->car_enemy_position[level->car_enemy_active_count].z > CAR_LENGTH * 4)
         level->car_enemy_active_count++;
 
@@ -134,18 +157,58 @@ static void process_state_playing(level_t* level){
     if(level->terrain_position.z > 20.f) 
         level->terrain_position.z -= 20.f;
 
+
+    // BeginTextureMode(level->render_texture);{
+    //     ClearBackground(BLANK);
+    //     BeginMode3D(level->camera_shadow_map);
+    //     {
+    //         DrawModel(level->models[MODELS_CAR_HERO], level->car_position, 1.f, WHITE);
+    //         for(int i = 0; i < level->car_enemy_active_count; i++)
+    //             DrawModel(level->models[MODELS_CAR_ENEMY], level->car_enemy_position[i], 1.f, WHITE);
+
+    //         for(int i = 0; i < TREE_COUNT; i++){
+    //             level->tree_positions[i].z = i * 10 + level->terrain_position.z - 200;
+    //             DrawModel(level->models[MODELS_TREE], level->tree_positions[i], 1.f, WHITE);
+    //             level->tree_positions[i].x *= -1;
+    //             DrawModel(level->models[MODELS_TREE], level->tree_positions[i], 1.f, WHITE);
+    //         }
+    //     }
+    //     EndMode3D();
+    // }EndTextureMode();
+
+    
+
     BeginDrawing();
     {
+        BoundingBox car_box = {0};
+        BoundingBox car_enemy_box = {0};
+
+        car_box.max = Vector3Add(level->car_position, car_box.max);
+        car_box.min = Vector3Add(level->car_position, car_box.min);
+
         ClearBackground(WHITE);
         DrawFPS(10, 10);
-
+        DrawText("SPEED", GetScreenWidth() * 0.45f, 5.f, 20, BLACK);
+        
         BeginMode3D(level->screen.camera);
         {
+            for(int i = 0; i < Remap(level->car_speed, 0.f, CAR_MAX_SPEED, 0, 20); i++) {
+                Color color = i < 7 ? GREEN : i < 15 ? YELLOW : RED;
+                DrawCube((Vector3){-4.75f + i * 0.5f, 10.7f, CAR_Z_POSITION}, 0.5f, 0.5f, 0.5f, color);
+                DrawCubeWires((Vector3){-4.75f + i * 0.5f, 10.7f, CAR_Z_POSITION}, 0.5f, 0.5f, 0.5f, DARKGRAY);
+            }
+            DrawCubeWires((Vector3){0.f, 10.7f, CAR_Z_POSITION}, 10.f, 0.5f, 0.5f, BLUE);
+            // DrawModel(level->models[MODELS_TERRAIN], (Vector3){0, -1.f, 0}, 1.f, WHITE);
             DrawModel(level->models[MODELS_TERRAIN], level->terrain_position, 1.f, WHITE);
             DrawModel(level->models[MODELS_CAR_HERO], level->car_position, 1.f, WHITE);
-            for(int i = 0; i < level->car_enemy_active_count; i++)
+            for(int i = 0; i < level->car_enemy_active_count; i++){
                 DrawModel(level->models[MODELS_CAR_ENEMY], level->car_enemy_position[i], 1.f, WHITE);
-
+                car_enemy_box.max = Vector3Add(level->car_enemy_position[i], level->car_enemy_bounding_box.max);
+                car_enemy_box.min = Vector3Add(level->car_enemy_position[i], level->car_enemy_bounding_box.min);
+                if(CheckCollisionBoxes(car_box,car_enemy_box))
+                    level->car_speed = 0;
+            }
+            DrawBoundingBox(car_box, RED);
             for(int i = 0; i < TREE_COUNT; i++){
                 level->tree_positions[i].z = i * 10 + level->terrain_position.z - 200;
                 DrawModel(level->models[MODELS_TREE], level->tree_positions[i], 1.f, WHITE);
@@ -176,6 +239,17 @@ static void process_state_playing(level_t* level){
         if (IsKeyDown(KEY_KP_3))
             level->screen.camera.position.x -= .1f;
 
+        // if (IsKeyDown(KEY_I))
+        //     level->camera_shadow_map.position.x = level->light_1.position.x += 1.f; 
+        // if (IsKeyDown(KEY_O))
+        //     level->camera_shadow_map.position.x = level->light_1.position.x -= 1.f; 
+        // if (IsKeyDown(KEY_U))
+        //     level->camera_shadow_map.position.z = level->light_1.position.z += 1.f; 
+        // if (IsKeyDown(KEY_J))
+        //     level->camera_shadow_map.position.z = level->light_1.position.z -= 1.f; 
+
+
+
         if (IsKeyDown(KEY_KP_5))
             level->screen.camera = camera_init();
 
@@ -187,6 +261,9 @@ static void process_state_playing(level_t* level){
             level->car_target_position.z -= CAR_LATERAL_SPEED;
         if (IsKeyPressed(KEY_DOWN))
             level->car_target_position.z += CAR_LATERAL_SPEED;
+
+        level->camera_shadow_map.fovy += IsKeyDown(KEY_A) * 0.1f;
+        level->camera_shadow_map.fovy -= IsKeyDown(KEY_S) * 0.1f;
 
         level->car_target_position.x = fmin(CAR_LATERAL_SPEED, fmax(level->car_target_position.x, -CAR_LATERAL_SPEED));
         level->car_position = Vector3Lerp(level->car_position, level->car_target_position, CAR_LERP_SPEED * GetFrameTime());
@@ -215,7 +292,7 @@ void shader_init(level_t* level){
     int ambientLoc = GetShaderLocation(level->shader, "ambient");
     SetShaderValue(level->shader, ambientLoc, (float[4]){ 0.2f, 0.2f, 0.2f, 1.0f }, UNIFORM_VEC4);
 
-    level->light_1 = CreateLight(LIGHT_POINT, (Vector3){ -60.f, 100.f, 100.f}, Vector3Zero(), WHITE, level->shader);
+    level->light_1 = CreateLight(LIGHT_POINT, (Vector3){ -60.f, 30.f, 0.f}, Vector3Zero(), WHITE, level->shader);
     UpdateLightValues(level->shader, level->light_1);
 }
 #endif
