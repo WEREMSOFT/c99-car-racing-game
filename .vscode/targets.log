@@ -1,13 +1,13 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # GNU Make 4.2.1
+ 
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2016 Free Software Foundation, Inc.
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
- 
 
-# Make data base, printed on Sun Oct 25 15:10:35 2020
+# Make data base, printed on Mon Oct 26 22:58:15 2020
 
 # Variables
 
@@ -58,7 +58,7 @@ VTE_VERSION = 6003
 # environment
 VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
 # makefile (from 'Makefile', line 40)
-EMSC_CFLAGS := -O2 -s -Wall -std=c99 -D_DEFAULT_SOURCE -Wno-missing-braces -s DISABLE_DEPRECATED_FIND_EVENT_TARGET_BEHAVIOR=0 -s USE_GLFW=3 -s TOTAL_MEMORY=67108864 -v -D OS_WEB
+EMSC_CFLAGS := -O2 -s -Wall -std=c99 -D_DEFAULT_SOURCE -Wno-missing-braces -s DISABLE_DEPRECATED_FIND_EVENT_TARGET_BEHAVIOR=0 -s USE_GLFW=3 -s TOTAL_MEMORY=67108864 -v -D OS_WEB --preload-file assets
 # environment
 JOURNAL_STREAM = 9:52837
 # makefile (from 'Makefile', line 33)
@@ -159,6 +159,7 @@ SSH_AGENT_PID = 1976
 EM_CACHE = /home/werem/Documents/projects/c/emsdk/upstream/emscripten/cache
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
+ 
 # environment
 GTK_MODULES = gail:atk-bridge
 # environment
@@ -180,7 +181,7 @@ SNAP_CONTEXT = JdDlJJ6rRKh92cKpQr8Bh3t1JqMC6MyfMwXmTG595Pq5
 # makefile (from 'Makefile', line 18)
 SRC_D := src/
 # makefile (from 'Makefile', line 47)
-EMSC_CC_COMMAND := emcc -O2 -s -Wall -std=c99 -D_DEFAULT_SOURCE -Wno-missing-braces -s DISABLE_DEPRECATED_FIND_EVENT_TARGET_BEHAVIOR=0 -s USE_GLFW=3 -s TOTAL_MEMORY=67108864 -v -D OS_WEB -Ilibs/include/ -Llibs/static/
+EMSC_CC_COMMAND := emcc -O2 -s -Wall -std=c99 -D_DEFAULT_SOURCE -Wno-missing-braces -s DISABLE_DEPRECATED_FIND_EVENT_TARGET_BEHAVIOR=0 -s USE_GLFW=3 -s TOTAL_MEMORY=67108864 -v -D OS_WEB --preload-file assets -Ilibs/include/ -Llibs/static/
 # makefile (from 'Makefile', line 34)
 DEBUGGER := kdbg 
 # environment
@@ -246,6 +247,7 @@ VSCODE_NODE_CACHED_DATA_DIR = /home/werem/.config/Code/CachedData/d2e414d9e4239a
 # makefile (from 'Makefile', line 25)
 HTML_D := docs/
 # environment
+ 
 OLDPWD = /home/werem/Documents/projects/c
 # default
 .VARIABLES := 
@@ -299,6 +301,7 @@ OBJ_D := obj/
 GJS_DEBUG_TOPICS = JS ERROR;JS LOG
 # makefile (from 'Makefile', line 54)
 LINK_LIBS := -l:libraylib.a -lm -ldl -lpthread -lX11 -lxcb -lGL -lGLX -lXext -lGLdispatch -lXau -lXdmcp
+ 
 # environment
 GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/0b5e16ea_dfd2_4b28_aae2_a3572c202976
 # automatic
@@ -336,8 +339,8 @@ INCLUDE_D := -Ilibs/include/
 # makefile (from 'Makefile', line 55)
 TEST_LINK_LIBS := -lunity 
 # variable set hash-table stats:
-# Load=162/1024=16%, Rehash=0, Collisions=35/239=15%
  
+# Load=162/1024=16%, Rehash=0, Collisions=35/239=15%
 
 # Pattern-specific Variable Values
 
@@ -384,6 +387,7 @@ run_perf_%.bin: bin/%.bin
 	
 
 debug_%: bin/%.bin
+ 
 #  recipe to execute (from 'Makefile', line 122):
 	$(DEBUGGER) $^
 
@@ -435,6 +439,7 @@ debug_optimized:
 
 run_performance_test:
 #  Phony target (prerequisite of .PHONY).
+ 
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
@@ -474,7 +479,8 @@ web: docs/main.html
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2020-10-25 14:45:32.046436059
+ 
+#  Last modified 2020-10-26 22:56:54.042520758
 #  File has been updated.
 #  Successfully updated.
 
@@ -518,6 +524,7 @@ docs/main.html:
 #  File has not been updated.
 
 # Not a target:
+ 
 .DEFAULT:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
@@ -570,10 +577,10 @@ print_information:
 # variable set hash-table stats:
 # Load=8/32=25%, Rehash=0, Collisions=1/12=8%
 #  recipe to execute (from 'Makefile', line 95):
+ 
 	@echo "Dettected OS: $(DETTECTED_OS)"
 
 main: src/main.c
- 
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -602,6 +609,6 @@ init_project: create_folders
 # strcache performance: lookups = 89 / hit rate = 39%
 # hash-table stats:
 # Load=54/8192=1%, Rehash=0, Collisions=2/89=2%
-# Finished Make data base on Sun Oct 25 15:10:35 2020
+# Finished Make data base on Mon Oct 26 22:58:15 2020
 
  

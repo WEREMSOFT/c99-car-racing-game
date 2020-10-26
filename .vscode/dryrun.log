@@ -2,7 +2,7 @@ make --dry-run --keep-going --print-directory
 make: Entering directory '/home/werem/Documents/projects/c/c99-car-racing-game'
  
 echo "Dettected OS: Linux"
-emcc -O2 -s -Wall -std=c99 -D_DEFAULT_SOURCE -Wno-missing-braces -s DISABLE_DEPRECATED_FIND_EVENT_TARGET_BEHAVIOR=0 -s USE_GLFW=3 -s TOTAL_MEMORY=67108864 -v -D OS_WEB -Ilibs/include/ -Llibs/static/ -g4 --source-map-base http://127.0.0.1:5500/html/ src/main.c -o docs/main.html libs/static/libraylib.bc
+emcc -O2 -s -Wall -std=c99 -D_DEFAULT_SOURCE -Wno-missing-braces -s DISABLE_DEPRECATED_FIND_EVENT_TARGET_BEHAVIOR=0 -s USE_GLFW=3 -s TOTAL_MEMORY=67108864 -v -D OS_WEB --preload-file assets -Ilibs/include/ -Llibs/static/ -g4 --source-map-base http://127.0.0.1:5500/html/ src/main.c -o docs/main.html libs/static/libraylib.bc
 cp -r src html/src
 make: Leaving directory '/home/werem/Documents/projects/c/c99-car-racing-game'
  

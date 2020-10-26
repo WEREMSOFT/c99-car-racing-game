@@ -23,7 +23,7 @@ int main(void)
     game_context_t context = game_init();
 
 #ifdef OS_WEB
-    emscripten_set_main_loop_arg(update_frame, &context, 0, 1);
+    emscripten_set_main_loop_arg(game_update, &context, 0, 1);
 #else
     while (!WindowShouldClose())
     {
