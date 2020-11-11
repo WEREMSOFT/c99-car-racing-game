@@ -9,13 +9,6 @@
 
 int main(void)
 {
-#ifdef OS_Windows_NT
-    printf("Windows dettected\n");
-#elif defined OS_Linux
-    printf("LINUS dettected\n");
-#elif defined OS_Darwin
-    printf("MacOS dettected\n");
-#endif
 
     InitWindow(WIDTH, HEIGHT, "AWESOME RACING!!!");
     SetTargetFPS(60);
@@ -27,6 +20,7 @@ int main(void)
 #else
     while (!WindowShouldClose())
     {
+        menu_update();
         game_update(&context);
     }
 #endif

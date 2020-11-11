@@ -51,6 +51,7 @@ void level_fini(level_t level);
 void level_pass_to_state_playing(level_t* level);
 void level_pass_to_state_dead(level_t* level);
 void shader_init(level_t* level);
+float Remap(float value, float inputStart, float inputEnd, float outputStart, float outputEnd) ;
 
 #endif
 
@@ -60,6 +61,12 @@ void shader_init(level_t* level);
 #include <raylib.h>
 #include <math.h>
 #include "screen_utils.h"
+
+// Remap input value within input range to output range
+RMDEF float Remap(float value, float inputStart, float inputEnd, float outputStart, float outputEnd) 
+{
+    return (value - inputStart) / (inputEnd - inputStart) * (outputEnd - outputStart) + outputStart;
+}
 
 level_t level_init(void){
     level_t return_value = {0};
@@ -86,14 +93,17 @@ level_t level_init(void){
     Image img_tree = GenImageChecked(2, 2, 1, 1, GREEN, DARKGREEN);
     
     return_value.models[MODELS_TERRAIN] = LoadModelFromMesh(GenMeshCube(TERRAIN_SIDE_SIZE, 0.2f, TERRAIN_SIDE_SIZE));
-    return_value.models[MODELS_CAR_HERO] = LoadModelFromMesh(GenMeshCube(4.f, 2.f, CAR_LENGTH));
-    return_value.models[MODELS_CAR_ENEMY] = LoadModelFromMesh(GenMeshCube(4.f, 2.f, CAR_LENGTH));
+    // return_value.models[MODELS_CAR_HERO] = LoadModelFromMesh(GenMeshCube(4.f, 2.f, CAR_LENGTH));
+
+    return_value.models[MODELS_CAR_HERO] = LoadModel("assets/models/KITT.obj");
+    // return_value.models[MODELS_CAR_ENEMY] = LoadModelFromMesh(GenMeshCube(4.f, 2.f, CAR_LENGTH));
+    return_value.models[MODELS_CAR_ENEMY] = LoadModel("assets/models/KITT.obj");
     return_value.models[MODELS_TREE] = LoadModelFromMesh(GenMeshCylinder(1.f, 5.f, 4));
 
     return_value.models[MODELS_TERRAIN].materials[0].maps[MAP_DIFFUSE].texture = LoadTextureFromImage(img_terrain);
 
-    return_value.models[MODELS_CAR_HERO].materials[0].maps[MAP_DIFFUSE].texture = LoadTextureFromImage(img_car);
-    return_value.models[MODELS_CAR_ENEMY].materials[0].maps[MAP_DIFFUSE].texture = LoadTextureFromImage(img_car_enemy);
+    // return_value.models[MODELS_CAR_HERO].materials[0].maps[MAP_DIFFUSE].texture = LoadTextureFromImage(img_car);
+    // return_value.models[MODELS_CAR_ENEMY].materials[0].maps[MAP_DIFFUSE].texture = LoadTextureFromImage(img_car_enemy);
     return_value.models[MODELS_TREE].materials[0].maps[MAP_DIFFUSE].texture = LoadTextureFromImage(img_tree);
 
     return_value.render_texture = LoadRenderTexture(2048, 2048);
@@ -104,6 +114,9 @@ level_t level_init(void){
     return_value.models[MODELS_CAR_HERO].materials[0].shader = return_value.shader;
     return_value.models[MODELS_CAR_ENEMY].materials[0].shader = return_value.shader;
     return_value.models[MODELS_TREE].materials[0].shader = return_value.shader;
+
+    return_value.models[MODELS_CAR_HERO].transform = MatrixRotateY(PI);
+    return_value.models[MODELS_CAR_ENEMY].transform = MatrixRotateY(PI);
 
     UnloadImage(img_terrain);
     UnloadImage(img_car);
@@ -136,7 +149,6 @@ void level_fini(level_t level) {
 
 static void process_state_playing(level_t* level){
     UpdateLightValues(level->shader, level->light_1);
-
 
     if(level->car_enemy_active_count < CAR_ENEMY_COUNT && level->car_enemy_position[level->car_enemy_active_count - 1].z - level->car_enemy_position[level->car_enemy_active_count].z > CAR_LENGTH * 4)
         level->car_enemy_active_count++;
@@ -200,9 +212,9 @@ static void process_state_playing(level_t* level){
             DrawCubeWires((Vector3){0.f, 10.7f, CAR_Z_POSITION}, 10.f, 0.5f, 0.5f, BLUE);
             // DrawModel(level->models[MODELS_TERRAIN], (Vector3){0, -1.f, 0}, 1.f, WHITE);
             DrawModel(level->models[MODELS_TERRAIN], level->terrain_position, 1.f, WHITE);
-            DrawModel(level->models[MODELS_CAR_HERO], level->car_position, 1.f, WHITE);
+            DrawModel(level->models[MODELS_CAR_HERO], level->car_position, .75f, RED);
             for(int i = 0; i < level->car_enemy_active_count; i++){
-                DrawModel(level->models[MODELS_CAR_ENEMY], level->car_enemy_position[i], 1.f, WHITE);
+                DrawModel(level->models[MODELS_CAR_ENEMY], level->car_enemy_position[i], .75f, BLACK);
                 car_enemy_box.max = Vector3Add(level->car_enemy_position[i], level->car_enemy_bounding_box.max);
                 car_enemy_box.min = Vector3Add(level->car_enemy_position[i], level->car_enemy_bounding_box.min);
                 if(CheckCollisionBoxes(car_box,car_enemy_box))

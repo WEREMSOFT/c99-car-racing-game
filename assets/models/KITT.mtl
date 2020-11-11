@@ -1,0 +1,85 @@
+# MTL written from E:\_3D_\_SELL_\KITT\KITT.obj
+newmtl Black
+Kd 0.00749904 0.00749904 0.00749904
+Ns 256
+d 1
+illum 2
+Ka 0 0 0
+Ks 0.2 0.2 0.2
+newmtl Black_Plastic
+Kd 0.0307135 0.0307135 0.0307135
+Ns 256
+d 1
+illum 2
+Ka 0 0 0
+Ks 0.2 0.2 0.2
+newmtl Chrome
+Kd 0.488271 0.620005 0.693038
+Ns 256
+d 1
+illum 2
+Ka 0 0 0
+Ks 0.4 0.4 0.4
+newmtl Front_Light
+Kd 1 1 1
+Ns 256
+d 1
+illum 2
+Ka 0.35 0.35 0.35
+Ks 0.2 0.2 0.2
+newmtl Glass
+Kd 0 0.0490621 0.110759
+Ns 256
+d 1
+illum 2
+Ka 0 0 0
+Ks 0.4 0.4 0.4
+newmtl Indicator
+Kd 1 0.215861 0
+Ns 256
+d 1
+illum 2
+Ka 0.25 0.0539651 0
+Ks 0.2 0.2 0.2
+newmtl KITT_Body
+Kd 0.0411392 0.0411392 0.0411392
+Ns 256
+d 1
+illum 2
+Ka 0 0 0
+Ks 0.2 0.2 0.2
+newmtl Rims
+Kd 0.0664557 0.0664557 0.0664557
+Ns 256
+d 1
+illum 2
+Ka 0 0 0
+Ks 0.5 0.5 0.5
+newmtl Stop_Lights
+Kd 0.490506 0 0
+Ns 256
+d 1
+illum 2
+Ka 0.4 0 0
+Ks 0.2 0.2 0.2
+newmtl Stop_Lights_Dark
+Kd 0.376262 0 0
+Ns 256
+d 1
+illum 2
+Ka 0.073576 0.00225232 0.00225232
+Ks 0.2 0.2 0.2
+newmtl Tire
+Kd 0.0411392 0.0411392 0.0411392
+Ns 256
+d 1
+illum 2
+Ka 0 0 0
+Ks 0.2 0.2 0.2
+newmtl White
+Kd 1 1 1
+Ns 256
+d 1
+illum 2
+Ka 0 0 0
+Ks 0.2 0.2 0.2
